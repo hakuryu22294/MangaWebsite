@@ -1,0 +1,197 @@
+
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+
+
+
+#header{
+  background-color: #20c997;
+}
+
+header a>i{
+  font-size: 24px ;
+  color: white;
+}
+
+.banner{
+  border: 2px solid #20c997;
+
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+
+.col-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px; /* Khoảng cách giữa các button */
+}
+
+.cate-item {
+  flex: 1;
+}
+
+.cate-item button {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 90%;
+  font-size: 24px;
+  font-weight: 600;
+}
+.cate-item button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://animeshelter.com/wp-content/uploads/2020/08/the-god-of-high-school-episode-2-0922.jpg") no-repeat scroll 0 0 transparent;
+  background-size: cover;
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 500px; /* Đặt chiều cao cố định cho tất cả các hình ảnh */
+  object-fit: cover; /* Giữ cho tỷ lệ khung hình không thay đổi */
+}
+.cate-item button {
+  color: white; /* Set the text color to white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  height: 100%; 
+  text-shadow: 0 0 3px #0c20cf;
+}
+
+.cate-item button:hover {
+  background-color: hsla(162, 73%, 46%, 0.363); 
+
+}
+
+.col-md-4 {
+  flex: 0 0 30%;
+}
+
+.list-group a:hover{
+  background-color: #20c997;
+  transition: all .5s;
+  color: aliceblue;
+}
+
+#products .header{
+  padding: 10px;
+  background-color: #20c997;
+  width: 100%;
+}
+
+
+
+.products-container{
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.product-thumbs{
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.product-details{
+  border: 2px solid #20c997;
+  border-radius: 5px;
+  box-shadow: #20c997 12px 12px 0px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.product-details img{
+  border: 1px solid #20c997;
+}
+
+.product-details p {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.product-details span{
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.category{
+  background-color: transparent;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border: 2px solid  #20c997;
+  border-radius: 20px;
+  color: #20c997;
+}
+
+.rating i{
+  color: #d46012;
+  font-size: 14px;
+}
+
+.views{
+  font-size: 14px;
+  color: #f1be32;
+}
+.card{
+  background-color: #646cff11;
+}
+
+a.product-link{
+  height: 300px;
+  overflow: hidden;
+  padding-top: 10px;
+}
+
+.product-item{
+  width: 24%;
+  border-radius: 3px;
+}
+.card{
+  gap:0
+}
+
+.product-item:hover{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.section-title{
+  font-size: 24px;
+  color: aliceblue;
+}
+
+.status-instock{
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: aliceblue;
+}
+.status-instock.success{
+  background-color: #20c997;
+}
+.status-instock.danger{
+  background-color: #e61c4e;
+}
+ #products .search{
+  width: 30%;
+ }
+
+
+
+
