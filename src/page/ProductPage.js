@@ -1,12 +1,8 @@
-import axios from "axios";
-import TruncateDescription from "../ultils/Truncate";
+import { getDeatilsProduct } from "../apis/ProductApis";
+import TruncateDescription from "../utils/Truncate";
 const ProductPage = async (prdID) => {
   try {
-    const response = await axios.get(
-      `http://localhost:8080/api/products/${prdID}`
-    );
-    console.log(response);
-    const product = await response.data.product;
+    const product = (await getDeatilsProduct(prdID)).data.product;
     const truncate = TruncateDescription(product.description, 200);
     return `
         <div class="product-page container mt-5">

@@ -1,17 +1,11 @@
-import axios from "axios";
-import TruncateDescription from "../ultils/Truncate";
+import TruncateDescription from "../utils/Truncate";
 import RatingComponent from "../components/RatingComponent";
+import { getAllPrducts, updateView } from "../apis/ProductApis";
+import SearchComponent from "../components/SearchComponent.js";
 
 const HomePage = async () => {
-  const response = await axios.get("http://localhost:8080/api/products", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  const products = response.data.products;
-
-  const productsHtml = products
+  const products = await getAllPrducts();
+  const productsHtml = products.data.products
     .map((prd) => {
       const truncate = TruncateDescription(prd.name, 50);
 
@@ -40,13 +34,8 @@ const HomePage = async () => {
   return `
     <section id="products" class="container p-0 mt-5">
           <div class="products-container">
-            <div class="header d-flex justify-content-between align-items-center">
+            <div class="header d-flex bg-gradient bg-success justify-content-between align-items-center">
             <h2 class="section-title m-0"><i class="fa-solid fa-arrow-trend-up"></i>  Buy to day</h2>
-            <form class="input-group search">
-            
-            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Search input ...">
-            <button type="submit" class="input-group-text btn btn-warning"><i class="fa-solid fa-magnifying-glass me-1"></i>Seach</button>
-            </form>
             </div>
             <div class="product-thumbs row justify-content-between">
             ${productsHtml} 
@@ -66,7 +55,7 @@ document.addEventListener("click", async (event) => {
   if (productLink) {
     const productId = productLink.getAttribute("href").split("/").pop();
     try {
-      await axios.patch(`http://localhost:8080/api/products/view/${productId}`);
+      await updateView(productId);
     } catch (error) {
       console.error("Error increasing product view:", error);
     }

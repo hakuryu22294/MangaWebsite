@@ -3,46 +3,34 @@ import HomePage from "./src/page/HomePage.js";
 import HeaderComnponent from "./src/components/HeaderComponent";
 import BannerComponent from "./src/components/BannerComponents.js";
 import ProductPage from "./src/page/ProductPage.js";
+import ProductListPage from "./src/page/ProductListPage.js";
 import ErrorScreen from "./src/page/ErrorPage.js";
+import { render } from "./src/utils/utils.js";
 import Navigo from "navigo";
 
 const app = document.getElementById("app");
-const header = createElement("header", "header");
-const banner = createElement("div", "banner");
-app.appendChild(header);
-app.appendChild(banner);
-render({ target: header, content: HeaderComnponent });
 
-const homePage = createElement("div", "homePage");
-app.appendChild(homePage);
-
-const router = new Navigo("/");
+const router = new Navigo("/", { linkSelector: "a" });
 
 router
-  .on("/", () => {
-    render(
-      { target: banner, content: BannerComponent },
-      { target: homePage, content: HomePage }
-    );
+  .on("/", async () => {
+    await render(app, HeaderComnponent);
+    await render(app, BannerComponent, HomePage);
+  })
+  .on("/products", async (params, query) => {
+    await render(app, () => ProductListPage(query ? query.query : ""));
+  })
+  .on("/products/search*", async ({ query }) => {
+    const searchTerm = query ? query.query : "";
+    router.navigate(`/products/search?query=${searchTerm}`);
+    await render(app, () => ProductListPage(searchTerm));
   })
   .on("/products/:id", async ({ data }) => {
     const id = data.id;
     const product = await ProductPage(id);
-    render({ target: homePage, content: () => product });
+    render(app, HeaderComnponent, () => product);
   })
   .notFound(() => {
-    render({ target: homePage, content: ErrorScreen });
+    render(app, ErrorScreen);
   })
   .resolve();
-
-function createElement(elem, id) {
-  const element = document.createElement(elem);
-  element.setAttribute("id", id);
-  return element;
-}
-
-async function render(...targets) {
-  targets.forEach(async ({ target, content }) => {
-    target.innerHTML = await content();
-  });
-}

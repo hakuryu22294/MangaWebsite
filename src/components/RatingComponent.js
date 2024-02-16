@@ -1,5 +1,4 @@
 const RatingComponent = (props) => {
-  console.log(props);
   if (!props) return `<div></div>`;
   return `<div class="rating">
     <span>
