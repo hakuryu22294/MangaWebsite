@@ -1,5 +1,8 @@
 
+body{
+  font-family:"Anta", sans-serif;
 
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -15,6 +18,15 @@ a:hover {
 #header{
   background-color: #20c997;
 }
+
+.micro-5-regular {
+  font-family: "Micro 5", sans-serif;
+  font-weight: 600;
+  font-size: 64px;
+  color: #f1f1f1 !important;
+  line-height: 30px;
+}
+
 
 header a>i{
   font-size: 24px ;
@@ -192,6 +204,138 @@ a.product-link{
   width: 30%;
  }
 
+ .autocomplete-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.autocomplete-item:hover {
+  background-color: #f1f1f1;
+}
+
+#register-page{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 3px;
+
+}
+
+#register-page .form-title{
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 30px;
+  color: #20c997;
+}
 
 
+#register-form{
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.section-page{
+  height: 80vh;
+}
+
+.alert {
+  position: fixed;
+  top: -50px; 
+  right: 20px; 
+  padding: 15px;
+  width: 200px; 
+  border-radius: 4px;
+  animation: slideIn 0.5s forwards;
+}
+.personal-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+.personal-avatar i{
+  line-height: 40px;
+}
+
+@keyframes slideIn {
+  from {
+    top: -50px;
+  }
+  to {
+    top: 20px;
+  }
+}
+
+#user-option i{
+  font-size: 20px;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding-top: 1rem;
+  background-color: #20c997;
+  padding-left: 1rem;
+}
+
+.sidebar-brand-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.sidebar-divider {
+  margin: 1rem 0;
+}
+
+.nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.nav-link {
+  color: #333;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.dashboard-page{
+  width: 250px;
+  position: relative;
+  height: 100vh;
+}
+
+.nav-link:hover, .nav-link.selected{
+  transform: translateX(20px)
+}
+
+.nav-link{
+  transition: transform 0.3s ease;
+}
+
+.dash-menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+.dashboard-content{
+  width: calc(60% - 250px);
+  margin: auto;
+}
 

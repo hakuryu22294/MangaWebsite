@@ -3,7 +3,7 @@ import RatingComponent from "../components/RatingComponent";
 import Truncate from "../utils/Truncate";
 import SearchComponent from "../components/SearchComponent";
 
-const ProductListPage = async (searchTerm = "") => {
+const ProductListPage = async () => {
   let originalProductList = [];
   let productList = [];
 
@@ -33,34 +33,32 @@ const ProductListPage = async (searchTerm = "") => {
       .join("");
     return productListContent;
   };
-
-  const handleSearch = (searchTerm) => {
-    if (searchTerm) {
-      productList = originalProductList.filter((product) =>
+  originalProductList = (await getAllPrducts()).data.products;
+  const handleSearch = async (searchTerm) => {
+    if (searchTerm && searchTerm.length > 0) {
+      console.log(searchTerm);
+      const filteredProducts = originalProductList.filter((product) =>
         product.name.toLowerCase().includes(searchTerm)
       );
-      console.log(productList);
-    } else {
-      productList = [...originalProductList];
-    }
-    document.getElementById("product-thumbs").innerHTML =
-      renderProductList(productList);
-  };
 
-  originalProductList = (await getAllPrducts()).data.products;
+      return filteredProducts;
+    } else {
+      return originalProductList;
+    }
+  };
   productList = [...originalProductList];
 
   return `<section id="products" class="container p-0 mt-5">
     <div class="products-container">
-      <div class="header d-flex justify-content-between align-items-center bg-danger bg-gradient">
-        <h2 class="section-title m-0"><i class="fa-solid fa-arrow-trend-up me-2"></i>Choosen for you</h2>
-        ${SearchComponent({ handleSearch })}
-      </div>
-      <div id="product-thumbs" class="product-thumbs row justify-content-between">
-        ${renderProductList(productList)}
-      </div>
+        <div class="header d-flex justify-content-between align-items-center bg-danger bg-gradient">
+            <h2 class="section-title m-0"><i class="fa-solid fa-arrow-trend-up me-2"></i>Choosen for you</h2>
+            ${SearchComponent({ handleSearch })}
+        </div>
+        <div id="product-thumbs" class="product-thumbs row justify-content-between">
+            ${renderProductList(productList)}
+        </div>
     </div>
-  </section>`;
+</section>`;
 };
 
 export default ProductListPage;

@@ -1,7 +1,6 @@
 import TruncateDescription from "../utils/Truncate";
 import RatingComponent from "../components/RatingComponent";
 import { getAllPrducts, updateView } from "../apis/ProductApis";
-import SearchComponent from "../components/SearchComponent.js";
 
 const HomePage = async () => {
   const products = await getAllPrducts();
@@ -41,11 +40,9 @@ const HomePage = async () => {
             ${productsHtml} 
             </div>
             <div class="text-center my-5">
-            <button class="btn btn-success">View more <i class="fa-solid fa-arrow-right"></i></button>  
+            <button id="view-more" class="btn btn-success">View more <i class="fa-solid fa-arrow-right"></i></button>
           </div>
           </div>
-         
-         
     </section>
   `;
 };
@@ -59,6 +56,12 @@ document.addEventListener("click", async (event) => {
     } catch (error) {
       console.error("Error increasing product view:", error);
     }
+  }
+});
+document.addEventListener("click", async (event) => {
+  const viewMoreBtn = event.target.closest("#view-more");
+  if (viewMoreBtn) {
+    window.location.href = "/products";
   }
 });
 
