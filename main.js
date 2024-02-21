@@ -11,6 +11,7 @@ import { render } from "./src/utils/utils.js";
 import Navigo from "navigo";
 import AdminPage from "./src/page/admin/AdminPage.js";
 import ProductsTable from "./src/page/admin/ProductsTable.js";
+import FormComponent from "./src/components/FormComponent.js";
 
 const app = document.getElementById("app");
 
@@ -55,6 +56,10 @@ router
     await render(app, () => ProductsTable.render());
     await ProductsTable.after_render();
   })
+  .on(
+    "/admin/all-products/add",
+    async () => await render(app, () => FormComponent.render())
+  )
   .notFound(() => {
     render(app, ErrorScreen);
   })

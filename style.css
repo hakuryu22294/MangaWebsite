@@ -334,7 +334,7 @@ a.product-link{
 }
 
 
-.dashboard-content{
+.dashboard-content, .form-container{
   width: calc(60% - 250px);
   margin: auto;
 }
