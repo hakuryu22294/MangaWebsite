@@ -46,6 +46,7 @@ const RatingComponent = (props) => {
         : "fa-regular fa-star"
     }"></i>
     </span>
+    <span>${props}</span>
   </div>`;
 };
 

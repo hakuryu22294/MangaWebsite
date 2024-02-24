@@ -3,7 +3,7 @@ import HomePage from "./src/page/HomePage.js";
 import HeaderComnponent from "./src/components/HeaderComponent";
 import BannerComponent from "./src/components/BannerComponents.js";
 import ProductPage from "./src/page/ProductPage.js";
-import ProductListPage from "./src/page/ProductListPage.js";
+import ProductListPage from "./src/components/ProductListComponent.js";
 import ErrorScreen from "./src/page/ErrorPage.js";
 import RegisterPage from "./src/page/RegisterPage.js";
 import LoginPage from "./src/page/LoginPage.js";
@@ -22,10 +22,12 @@ router
     await render(
       app,
       () => HeaderComnponent.render(),
-      BannerComponent,
-      HomePage
+      () => BannerComponent.render(),
+      () => HomePage.render()
     );
     HeaderComnponent.after_render();
+    await BannerComponent.after_render();
+    await HomePage.after_render();
   })
   .on("/products", async (params, query) => {
     await render(app, () => ProductListPage(query ? query.query : ""));
